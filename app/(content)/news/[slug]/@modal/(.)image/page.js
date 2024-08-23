@@ -8,7 +8,6 @@ export default function InterceptedImagePage({ params }) {
 
 	const newsItemSlug = params.slug;
 	const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === newsItemSlug);
-	console.log("InterceptedImagePage", newsItem);
 	if (!newsItem) {
 		notFound(newsItem);
 	}
