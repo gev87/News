@@ -7,20 +7,20 @@ import {
 } from "@/lib/news";
 import Link from "next/link";
 
-export default function FilteredNewsPage({ params }) {
+export default async function FilteredNewsPage({ params }) {
 	const filter = params.filter || [];
 	const [selectedYear, selectedMonth] = filter;
 
-	let links = getAvailableNewsYears();
+	let links = await getAvailableNewsYears();
 
 	let news = [];
 
 	if (selectedYear) {
 		if (selectedMonth) {
-			news = getNewsForYearAndMonth(selectedYear, selectedMonth);
+			news = await getNewsForYearAndMonth(selectedYear, selectedMonth);
 			links = [];
 		} else {
-			news = getNewsForYear(selectedYear);
+			news = await getNewsForYear(selectedYear);
 			links = getAvailableNewsMonths(selectedYear);
 		}
 	}
